@@ -6,8 +6,8 @@ class Generator:
     
     def generate(recipe: Recipe, destination: str) -> bool:
         try:
-            # return True if successful
+            
             return True
-        except:
-            print("Something went wrong while generating the runsheet.")
+        except Exception as e:
+            print("Something went wrong while generating the runsheet. ", e)
             return False
