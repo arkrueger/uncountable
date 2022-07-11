@@ -4,6 +4,7 @@ class Recipe:
     class Section:
         def __init__(self, name: str, body: list):
             try:
+                self.name       = name
                 self.headers    = [] # the column headers (they are not the same as the column tags)
                 self.columns    = [] # the key referring to the data in each cell, e.g. "name" or "quantity"
                 self.lefthand   = "" # the column, if any, that will be placed on the furthest lefthand side
@@ -14,10 +15,12 @@ class Recipe:
                 elif name == "steps":
                     self.headers = ["Step Number", "Ingredient", "Quantity"]
                     self.columns = ["number", "name", "quantity"]
-                    self.lefthand = "number"
+                    self.lefthand = "Step Number"
                 elif name == "measurements":
                     self.headers = ["", "Completed?"]
-                    self.columns = ["name", ""]
+                    self.columns = ["name", "empty"]
+                    for b in body:
+                        b["empty"] = ""
                 else:
                     self.headers = ["",""]
                     self.columns = ["name", "quantity"]

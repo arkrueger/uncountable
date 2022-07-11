@@ -18,12 +18,12 @@ for file in os.listdir(input_dir):
         recipe = runsheets[name]
         for i in range(len(recipe)):
             recipe[i] = Recipe(recipe[i])
-            print(vars(recipe[i].sections[2]))
-print(runsheets)
+            # print(vars(recipe[i].sections[2]))
+# print(runsheets)
 
 gen = Generator()
-for sheet in runsheets:
-    gen.generate(sheet, output_dir)
+for name in runsheets.keys():
+    gen.generate(name, runsheets[name], output_dir)
 
 
 
