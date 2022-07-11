@@ -26,15 +26,18 @@ class Generator:
                     print("i ran")
                 # fill in the normal headers
                 for i,v in enumerate(section.headers):
-                    if len(section.headers) == header_offset+i: break
+                    if len(section.headers) == header_offset+i: break # avoids going out of range
                     worksheet.cell(row=row, column=col+i).value = section.headers[header_offset+i] # caveat: bad code, assumes that the lefthand header will be the first element. See the format document for ideas on building this information into the format itself to make the code more robust.
                 # fill in the body of the table
-                row += 1
+                row += 1 if any(section.headers) else 0 # don't increment if all headers are empty strings
                 print("hello")
                 for i, v in enumerate(section.rows):
+                    print(v)
                     for j,c in enumerate(section.columns):
                         if len(section.columns) == header_offset+j: break
                         worksheet.cell(row=row+i, column=col+j).value = section.rows[i][section.columns[header_offset+j]]
+                        if section.rows[i][section.columns[header_offset+j]] == "Project Lead":
+                            print("FOUND IT---------------------------------------------------")
                 print("did a full section successfully")
                 return row+i+2 # the next section will start 2 rows below the lowest row of this section
             except Exception as e:
