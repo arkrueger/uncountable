@@ -1,7 +1,6 @@
 class Recipe:
     class Section:
-        def __init__(self, section_format: dict, transposed: bool) -> bool:
-            # transposed indicates whether the section is organized as default row-wise (like steps), or transposed col-wise (like metadata)
+        def __init__(self, section_format: dict) -> bool:
             try:
                 return True
             except:
