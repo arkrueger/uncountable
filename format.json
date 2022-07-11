@@ -1,0 +1,52 @@
+/*
+This format would define behavior that is not described explicitly in the recipe.json files.
+
+Due to time constraints, I'm not implementing this format document. Instead, it's here as a look at how we can make the format extensible. 
+The recipe document itself doesn't contain information regarding which columns are displayed vs which modify other columns.
+For example, the "type" column in recipe.json isn't marked in any way that the parser would understand not to display it. 
+If a newer recipe format had another column, say "size", which also should not be displayed, this logic would need to be written in code, which makes it less readable and maintainable (requires a dev to build new formats).
+By abstracting the format definition into another json file, we can extend the format without changing the deployed code.
+
+Another option would be to add this information directly to the recipe.json format itself.
+*/
+
+// If it was a separate format that informed the parser how to interpret the existing recipe.json format:
+{
+    "format": {
+        "sections": [ {
+            "label": "metadata", "columns": ["name", "quantity"], "headerNames": ["",""]
+        },
+        {
+            "label": "steps", "columns": ["name", "quantity"], "headerNames": ["Ingredient", "Quantity"]
+        }
+        ]
+    }
+}
+
+// If we modified the existing recipe.json format:
+// See "steps" and "measurements"
+// dangling edge case: how to handle a column like "completed?"
+{
+    "data": [
+      {
+        "recipe_name": "Formulation1",
+        "metadata": [
+          { "name": "Sample ID", "quantity": 1234, "type_val": "numeric" },
+          { "name": "Sample Origin", "quantity": "NYC Lab", "type_val": "text" },
+          { "name": "Project Name", "quantity": "Space Age Fiber", "type_val": "text" }
+        ],
+        "steps": {
+            "headers": {"number": "Step Number", "name": "Ingredient", "quantity": "Quantity", // map the headers
+            "lefthand": "number", // if applicable, tell which column to place on the lefthand side
+            "rows": [
+          { "number": 0, "type": "instruction", "name": null, "quantity": "clean work area" },
+          { "number": 1, "type": "ingredient", "name": "compound A", "quantity": 24 },
+        ]
+    },
+        "measurements": { 
+            "headers": {"name": "", "": "Completed?"},
+            "rows": [{ "name": "mass_spec" }, { "name": "IR" }, { "name": "HPLC" }]
+      }
+    ]
+  }
+  
