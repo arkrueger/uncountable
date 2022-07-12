@@ -1,0 +1,44 @@
+{
+    "data": [
+      {
+        "recipe_name": "Formulation1",
+        "metadata": [
+          { "name": "Sample ID", "quantity": 1234, "type_val": "numeric" },
+          { "name": "Sample Origin", "quantity": "NYC Lab", "type_val": "text" },
+          { "name": "Project Name", "quantity": "Space Age Fiber", "type_val": "text" }
+        ],
+        "steps": [
+          { "number": 0, "type": "instruction", "name": null, "quantity": "clean work area" },
+          { "number": 1, "type": "ingredient", "name": "compound A", "quantity": 24 },
+          { "number": 2, "type": "ingredient", "name": "compound B", "quantity": 15 },
+          { "number": 3, "type": "ingredient", "name": "compound C", "quantity": 18 },
+          { "number": 4, "type": "ingredient", "name": "compound A", "quantity": 9 },
+          { "number": 5, "type": "instruction", "name": null, "quantity": "mix well" },
+          { "number": 6, "type": "instruction", "name": null, "quantity": "turn mixer off" },
+          { "number": 7, "type": "ingredient", "name": "water", "quantity": 12 }
+        ],
+        "measurements": [{ "name": "mass_spec" }, { "name": "IR" }, { "name": "HPLC" }]
+      },
+      {
+        "recipe_name": "Formulation2",
+        "metadata": [
+          { "name": "Sample ID", "quantity": 4567, "type_val": "numeric" },
+          { "name": "Sample Origin", "quantity": "SF Lab", "type_val": "text" },
+          { "name": "Project Name", "quantity": "Stone Age Fiber", "type_val": "text" },
+          { "name": "Project Lead", "quantity": "Leader", "type_val": "text"}
+        ],
+        "steps": [
+          { "number": 0, "type": "instruction", "name": null, "quantity": "clean work area" },
+          { "number": 1, "type": "ingredient", "name": "compound D", "quantity": 34 },
+          { "number": 2, "type": "ingredient", "name": "compound E", "quantity": 25 },
+          { "number": 3, "type": "ingredient", "name": "compound F", "quantity": 18 },
+          { "number": 4, "type": "ingredient", "name": "compound G", "quantity": 29 },
+          { "number": 5, "type": "instruction", "name": null, "quantity": "mix well" },
+          { "number": 6, "type": "instruction", "name": null, "quantity": "turn mixer off" },
+          { "number": 7, "type": "ingredient", "name": "water", "quantity": 22 }
+        ],
+        "measurements": [{ "name": "mass_spec" }, { "name": "HPLC" }]
+      }
+    ]
+  }
+  
